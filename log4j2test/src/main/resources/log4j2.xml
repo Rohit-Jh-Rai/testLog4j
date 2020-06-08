@@ -7,6 +7,19 @@
       <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
     </Console>
 
+    <RollingFile name="RollingFileMain">
+      <FileName>C:/log/Mainlog.log</FileName>
+      <FilePattern>C:/log/time-based-logs/%d{yyyy-MM-dd-hh-mm}.log.zip</FilePattern>
+      <PatternLayout>
+        <Pattern>%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="2" modulate="true" />
+        <SizeBasedTriggeringPolicy size="10 KB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="5" />
+    </RollingFile>
+
     <!-- Rolling File Appender -->
     <RollingFile name="RollingFileA">
       <FileName>C:/log/Alog.log</FileName>
@@ -38,6 +51,10 @@
   </Appenders>
   
   <Loggers>
+    <Logger name="rohit" level="info" additivity="false">
+      <AppenderRef ref="RollingFileMain" />
+      <AppenderRef ref="Console" />
+    </Logger>
     <Logger name="rohit.A" level="info" additivity="false">
       <AppenderRef ref="RollingFileA" />
       <AppenderRef ref="Console" />
