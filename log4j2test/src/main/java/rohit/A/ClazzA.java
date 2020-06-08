@@ -11,6 +11,7 @@ public class ClazzA {
 	
 	public void doIt( ) {
 		logger.info("ClazzA do");
+		logger.error("ClazzA doError");
 	}
 
 }

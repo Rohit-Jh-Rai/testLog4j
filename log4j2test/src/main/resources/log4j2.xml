@@ -51,20 +51,25 @@
   </Appenders>
   
   <Loggers>
-    <AsyncLogger name="rohit" level="INFO" additivity="false">
-      <appender-ref ref="RollingFileMain"/>
-    </AsyncLogger>
-    <Logger name="rohit.A" level="info" additivity="false">
-      <AppenderRef ref="RollingFileA" />
-      <AppenderRef ref="Console" />
-    </Logger>
-     <Logger name="rohit.B" level="info" additivity="false">
-      <AppenderRef ref="RollingFileB" />
-      <AppenderRef ref="Console" />
-    </Logger>
-    <Root level="trace">
-      <AppenderRef ref="Console" />
-    </Root>
+
+        <AsyncLogger name="rohit" level="INFO" >
+              <appender-ref ref="RollingFileMain"/>
+        </AsyncLogger>
+
+        <AsyncLogger name="rohit.A" level="info" >
+              <AppenderRef ref="RollingFileA" />
+              <AppenderRef ref="Console" />
+        </AsyncLogger>
+
+         <AsyncLogger name="rohit.B" level="info" additivity="false">
+              <AppenderRef ref="RollingFileB" />
+              <AppenderRef ref="Console" />
+        </AsyncLogger>
+
+        <AsyncRoot level="ERROR">
+            <AppenderRef ref="RollingFileMain" />
+        </AsyncRoot>
+
   </Loggers>
   
 </Configuration>
